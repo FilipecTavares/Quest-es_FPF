@@ -1,0 +1,23 @@
+# Dicionário com a quantidade de LEDs necessários para cada número
+leds_por_numero = {
+    '0': 6, '1': 2, '2': 5, '3': 5, '4': 4,
+    '5': 5, '6': 6, '7': 3, '8': 7, '9': 6
+}
+
+# Lendo o número de casos de teste
+n = int(input("Insira o número de casos de teste"))
+
+# Loop sobre cada caso de teste
+for _ in range(n):
+    # Lendo o número
+    numero = input("Insira o número a ser lido").strip()
+
+    # Inicializando a variável para contar o total de leds
+    total_leds = 0
+
+    # Calculando a quantidade de LEDs necessários para o número atual
+    for digito in numero:
+        total_leds += leds_por_numero[digito]
+
+    # Imprimindo o resultado para o número atual
+    print(f"{total_leds} leds")
