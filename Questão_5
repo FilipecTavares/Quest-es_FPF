@@ -1,0 +1,20 @@
+def menor_numero_muralhas(n, x, titans, sizes):
+    muralhas_construidas = 0
+    tamanho_muralha = 0  # Inicialmente não temos muralhas
+
+    for titan in titans:
+        if sizes[titan] > tamanho_muralha:
+            muralhas_construidas += 1
+            tamanho_muralha = x
+        tamanho_muralha -= sizes[titan]
+
+    return muralhas_construidas
+
+# Lendo a entrada
+n, x = map(int, input().split())
+titans = input().strip()
+p, m, g = map(int, input().split())
+sizes = {'P': p, 'M': m, 'G': g}
+
+# Chamando a função e imprimindo o resultado
+print(menor_numero_muralhas(n, x, titans, sizes))
