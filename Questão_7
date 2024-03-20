@@ -1,0 +1,36 @@
+def procurar_palavras(matriz, palavra):
+    n = len(matriz)
+    for i in range(n):
+        for j in range(n):
+            # Verificar diagonal principal
+            if i == j and (matriz[i][j].lower() == palavra or matriz[i][j][::-1].lower() == palavra):
+                return 1
+            # Verificar acima da diagonal principal
+            elif i < j and matriz[i][j].lower() == palavra:
+                return 2
+            # Verificar abaixo da diagonal principal
+            elif i > j and matriz[i][j].lower() == palavra:
+                return 3
+    return 4
+
+# Lendo entrada
+N, M, P = map(int, input().split())
+
+# Lendo a matriz
+matriz = []
+for _ in range(M):
+    linha = input().split()
+    matriz.append(linha)
+
+# Lendo as palavras e verificando a existência delas na matriz
+for _ in range(N):
+    palavra = input().strip().lower()
+    resultado = procurar_palavras(matriz, palavra)
+    if resultado == 1:
+        print(f"1 Palavra \"{palavra}\" na diagonal principal")
+    elif resultado == 2:
+        print(f"2 Palavra \"{palavra}\" acima da diagonal principal")
+    elif resultado == 3:
+        print(f"3 Palavra \"{palavra}\" abaixo da diagonal principal")
+    else:
+        print(f"4 Palavra \"{palavra}\" inexistente")
