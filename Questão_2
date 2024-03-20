@@ -1,0 +1,13 @@
+while True:
+    d, n = map(int, input().split())
+    
+    if d == 0 and n == 0:
+        break
+    
+    n_str = str(n)
+    n_corrigido = n_str.replace(str(d), '')
+    
+    if n_corrigido == '':
+        n_corrigido = '0'
+    
+    print(int(n_corrigido))
