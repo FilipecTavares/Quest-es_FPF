@@ -1,0 +1,23 @@
+entrada = input("Digite a mensagem: ")
+
+# Primeira passada
+resultado = ''
+for char in entrada:
+    if char.isalpha():
+        resultado += chr((ord(char) - ord('A' if char.isupper() else 'a') + 3) % 26 + ord('A' if char.isupper() else 'a'))
+    else:
+        resultado += char
+
+print("Resultado da primeira passada:", resultado)
+
+# Segunda passada
+resultado = resultado[::-1]
+print("Resultado da segunda passada:", resultado)
+
+# Terceira passada
+metade = len(resultado) // 2
+for i in range(metade, len(resultado)):
+    if resultado[i].isalpha():
+        resultado = resultado[:i] + chr((ord(resultado[i]) - ord('A' if resultado[i].isupper() else 'a') - 1) % 26 + ord('A' if resultado[i].isupper() else 'a')) + resultado[i+1:]
+
+print("Resultado final:", resultado)
