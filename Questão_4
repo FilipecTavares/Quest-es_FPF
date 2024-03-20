@@ -1,0 +1,23 @@
+def calcularQuocienteEResto(a, b):
+    # Verificar se b é diferente de zero para evitar divisão por zero
+    if b != 0:
+        q = a // b
+        r = a % b
+        return q, r
+    else:
+        # Se b for zero, imprimir uma mensagem de erro
+        print("Erro: Divisão por zero!")
+        return None
+
+# Receber os números inteiros a e b da entrada do usuário
+a = int(input("Digite o primeiro número: "))
+b = int(input("Digite o segundo número: "))
+
+# Chamar a função para calcular o quociente e o resto
+resultado = calcularQuocienteEResto(a, b)
+
+# Se o resultado não for None, imprimir o quociente e o resto
+if resultado is not None:
+    q, r = resultado
+    print("Quociente:", q)
+    print("Resto:", r)
