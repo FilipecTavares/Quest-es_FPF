@@ -1,3 +1,34 @@
-#compressor
- 
-s
+def comprimir_string(s):
+    resultado = ""
+    i = 0
+    while i < len(s):
+      
+        count = 1
+        while i < len(s) - 1 and s[i] == s[i + 1]:
+            count += 1
+            i += 1
+        if count > 1:
+            resultado += f"[{s[i]}]{count}"
+        else:
+            resultado += s[i]
+        
+       
+        j = i + 1
+        while j < len(s) and s[j] != s[i]:
+            j += 1
+        if j < len(s):
+            resultado += f"{{{s[i+1:j]}}}{j - i}"
+            i = j
+        else:
+            i += 1
+    
+    return resultado
+
+# Número de casos de teste
+num_casos_teste = int(input("Inserir número de casos:"))
+
+# Iterar sobre cada caso de teste
+for _ in range(num_casos_teste):
+    entrada = input("Entrada:")
+    resultado = comprimir_string(entrada)
+    print(resultado)
